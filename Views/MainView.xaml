@@ -1,0 +1,171 @@
+﻿<Window x:Class="ShopADO_BD_MVVM_3_tier.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShopADO_BD_MVVM_3_tier"
+        xmlns:vm="clr-namespace:ShopADO_BD_MVVM_3_tier.Infractructure"
+        mc:Ignorable="d"
+        Title="ShopADO DB" Height="450" Width="850">
+    <Window.DataContext>
+        <vm:ViewModelLocator></vm:ViewModelLocator>
+    </Window.DataContext>
+    <Grid
+        DataContext="{Binding MainViewModel}">
+        <TabControl>
+            
+            <TabItem
+                Header="Goods"
+                FontSize="14"
+                FontWeight="Bold">
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="3*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid
+                        ItemsSource="{Binding Goods}"
+                        AutoGenerateColumns="False"
+                        SelectedItem="{Binding SelectedGood}"
+                        GridLinesVisibility="None"
+                        AlternatingRowBackground="LightGray"
+                        FontWeight="Bold"
+                        FontFamily="Calibri"
+                        FontSize="12">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Header="Id"
+                                Binding="{Binding GoodId}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Good name"
+                                Binding="{Binding GoodName}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Good category"
+                                Binding="{Binding CategoryId}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Good manufactorer"
+                                Binding="{Binding ManufacturerId}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Good count"
+                                Binding="{Binding GoodCount}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Good price"
+                                Binding="{Binding Price}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel
+                        Grid.Column="1">
+                        <Label>
+                            Work with DB
+                        </Label>
+                        <Button
+                            Margin="5"
+                            Command="{Binding RemoveGoodCommand}">Delete item</Button>
+                        <Button
+                            Margin="5"
+                            Command="{Binding AddUpdateGoodCommand}">Add item</Button>
+                        <Button
+                            Margin="5">Update item</Button>
+                    </StackPanel>
+                </Grid>
+                
+            </TabItem>
+            
+            <TabItem
+                Header="Categories"
+                FontSize="14"
+                FontWeight="Bold">
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid
+                        ItemsSource="{Binding Categories}"
+                        AutoGenerateColumns="False"
+                        SelectedItem="{Binding SelectedCategory}"
+                        GridLinesVisibility="None"
+                        AlternatingRowBackground="LightGray"
+                        FontWeight="Bold"
+                        FontFamily="Calibri"
+                        FontSize="12">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                               Header="Id"
+                                Binding="{Binding CategoryId}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Category name"
+                                Binding="{Binding CategoryName}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel
+                        Grid.Column="1">
+                        <Label>
+                            Work with DB
+                        </Label>
+                        <Button
+                            Margin="5"
+                            Command="{Binding RemoveCategoryCommand}">Delete item</Button>
+                        <Button
+                            Margin="5"
+                            Command="{Binding AddUpdateCategoryCommand}">Add item</Button>
+                        <Button
+                            Margin="5">Update item</Button>
+                    </StackPanel>
+                </Grid>
+                
+            </TabItem>
+            
+            <TabItem
+                Header="Manufactorers"
+                FontSize="14"
+                FontWeight="Bold">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid
+                        ItemsSource="{Binding Manufacturers}"
+                        AutoGenerateColumns="False"
+                        SelectedItem="{Binding SelectedManufactirer}"
+                        GridLinesVisibility="None"
+                        AlternatingRowBackground="LightGray"
+                        FontWeight="Bold"
+                        FontFamily="Calibri"
+                        FontSize="12">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                               Header="Id"
+                                Binding="{Binding ManufacturerId}"></DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Category name"
+                                Binding="{Binding ManufacturerName}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel
+                        Grid.Column="1">
+                        <Label>
+                            Work with DB
+                        </Label>
+                        <Button
+                            Margin="5"
+                            Command="{Binding RemoveManufacturerCommand}">Delete item</Button>
+                        <Button
+                            Margin="5"
+                            Command="{Binding AddUpdateManufacturerCommand}">Add item</Button>
+                        <Button
+                            Margin="5">Update item</Button>
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+            
+        </TabControl>
+       
+    </Grid>
+</Window>
